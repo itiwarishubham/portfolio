@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: myFont;
+    src: url("/assets/fonts/TitilliumWeb-Black.ttf") format("truetype");
+}
+
+.myimage{
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+}
+// TODO : make dynamic based on page refer this site - https://colorhunt.co/palettes/happy 
+.app{
+    background-color: #76BA99;
+}
