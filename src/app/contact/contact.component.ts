@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  messageForm:FormGroup = new FormGroup({
+    fullname: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
+    message: new FormControl('', [Validators.required, Validators.email])
+  });
+  success:boolean = false;
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    console.log(this.messageForm.value);
+    this.httpClient.post("https://itiwarishubham-ef4dd-default-rtdb.asia-southeast1.firebasedatabase.app/messages.json", this.messageForm.value)
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.success = true;
+          this.messageForm.reset();
+        },
+        (error)=>{
+          console.error(error);
+        }
+      );
   }
 
 }
