@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,14 +18,9 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
+import { AuthService } from "./shared/services/auth.service";
+import { DsaComponent } from './dsa/dsa.component';
 
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'skills', component: SkillsComponent },
-  { path: 'projects', component: ProjectsComponent },
-  { path: 'contact', component: ContactComponent },
-  
-];
 
 @NgModule({
   declarations: [
@@ -36,7 +31,8 @@ const routes: Routes = [
     HomeComponent,
     SkillsComponent,
     ProjectsComponent,
-    ContactComponent
+    ContactComponent,
+    DsaComponent
   ],
   imports: [
     BrowserModule,
@@ -44,14 +40,13 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule
   ],
-  providers: [HttpClientModule,HttpClient],
+  providers: [AuthService, HttpClientModule,HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

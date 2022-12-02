@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -24,12 +24,12 @@ export class ContactComponent implements OnInit {
     console.log(this.messageForm.value);
     this.httpClient.post("https://itiwarishubham-ef4dd-default-rtdb.asia-southeast1.firebasedatabase.app/messages.json", this.messageForm.value)
       .subscribe(
-        (response) => {
+        (response: any) => {
           console.log(response);
           this.success = true;
           this.messageForm.reset();
         },
-        (error)=>{
+        (error: any)=>{
           console.error(error);
         }
       );

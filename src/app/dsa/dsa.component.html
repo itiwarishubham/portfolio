@@ -1,0 +1,20 @@
+<div class="">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Link</th>
+            <th scope="col">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let question of questions;'>
+            <td>{{question.name}}</td>
+            <td>{{question.category}}</td>
+            <td><a href={{question.link}} target="_blank">Question Link</a></td>
+            <td>{{question.notes}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>>

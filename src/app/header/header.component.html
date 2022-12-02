@@ -16,13 +16,15 @@
                 <li class="nav-item">
                     <a routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link" href="#">Projects</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
-                </li> -->
+                <li class="nav-item">
+                    <a routerLink="/dsa" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link" href="#">DSA Problems</a>
+                </li>
                 <li class="nav-item">
                     <a routerLink="/contact" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
         </div>
+        <div *ngIf="!authService.isLoggedIn" class="text-right"><button class="" (click)="authService.GoogleAuth()">Signin with Google</button></div>
+        <div *ngIf="authService.isLoggedIn" class="text-right">Hi, {{authService.userData.displayName | uppercase }} <button class="" (click)="authService.SignOut()"> Logout</button></div>
     </nav>
 </div>

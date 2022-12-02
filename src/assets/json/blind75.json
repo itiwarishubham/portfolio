@@ -1,0 +1,536 @@
+{
+    "questions": [
+      {
+        "video_solution": "https://youtu.be/KLlXCFG5TnA",
+        "category": "Arrays",
+        "name": "Two Sum",
+        "link": "https://leetcode.com/problems/two-sum/",
+        "notes": "use hash map to instantly check for difference value, map will add index of last occurrence of a num, don’t use same element twice;"
+      },
+      {
+        "video_solution": "https://youtu.be/1pkOgXD63yU",
+        "category": "Arrays",
+        "name": "Best Time to Buy and Sell Stock",
+        "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+        "notes": "find local min and search for local max, sliding window;"
+      },
+      {
+        "video_solution": "https://youtu.be/3OamzN90kPg",
+        "category": "Arrays",
+        "name": "Contains Duplicate",
+        "link": "https://leetcode.com/problems/contains-duplicate/",
+        "notes": "hashset to get unique values in array, to check for duplicates easily"
+      },
+      {
+        "video_solution": "https://youtu.be/bNvIQI2wAjk",
+        "category": "Arrays",
+        "name": "Product of Array Except Self",
+        "link": "https://leetcode.com/problems/product-of-array-except-self/",
+        "notes": "make two passes, first in-order, second in-reverse, to compute products"
+      },
+      {
+        "video_solution": "https://youtu.be/5WZl3MMT0Eg",
+        "category": "Arrays",
+        "name": "Maximum Subarray",
+        "link": "https://leetcode.com/problems/maximum-subarray/",
+        "notes": "pattern: prev subarray cant be negative, dynamic programming: compute max sum for each prefix"
+      },
+      {
+        "video_solution": "https://youtu.be/lXVy6YWFcRM",
+        "category": "Arrays",
+        "name": "Maximum Product Subarray",
+        "link": "https://leetcode.com/problems/maximum-product-subarray/",
+        "notes": "dp: compute max and max-abs-val for each prefix subarr;"
+      },
+      {
+        "video_solution": "https://youtu.be/nIVW4P8b1VA",
+        "category": "Arrays",
+        "name": "Find Minimum in Rotated Sorted Array",
+        "link": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+        "notes": "check if half of array is sorted in order to find pivot, arr is guaranteed to be in at most two sorted subarrays"
+      },
+      {
+        "video_solution": "https://youtu.be/U8XENwh8Oy8",
+        "category": "Arrays",
+        "name": "Search in Rotated Sorted Array",
+        "link": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+        "notes": "at most two sorted halfs, mid will be apart of left sorted or right sorted, if target is in range of sorted portion then search it, otherwise search other half"
+      },
+      {
+        "video_solution": "https://youtu.be/jzZsG8n2R9A",
+        "category": "Arrays",
+        "name": "3Sum",
+        "link": "https://leetcode.com/problems/3sum/",
+        "notes": "sort input, for each first element, find next two where -a = b+c, if a=prevA, skip a, if b=prevB skip b to elim duplicates; to find b,c use two pointers, left/right on remaining list;"
+      },
+      {
+        "video_solution": "https://youtu.be/UuiTKBwPgAo",
+        "category": "Arrays",
+        "name": "Container With Most Water",
+        "link": "https://leetcode.com/problems/container-with-most-water/",
+        "notes": "shrinking window, left/right initially at endpoints, shift the pointer with min height;"
+      },
+      {
+        "video_solution": "https://youtu.be/gVUrDV4tZfY",
+        "category": "Binary",
+        "name": "Sum of Two Integers",
+        "link": "https://leetcode.com/problems/sum-of-two-integers/",
+        "notes": "add bit by bit, be mindful of carry, after adding, if carry is still 1, then add it as well;"
+      },
+      {
+        "video_solution": "https://youtu.be/5Km3utixwZs",
+        "category": "Binary",
+        "name": "Number of 1 Bits",
+        "link": "https://leetcode.com/problems/number-of-1-bits/",
+        "notes": "modulo, and dividing n; mod and div are expensive, to divide use bit shift, instead of mod to get 1's place use bitwise & 1;"
+      },
+      {
+        "video_solution": "https://youtu.be/RyBM56RIWrM",
+        "category": "Binary",
+        "name": "Counting Bits",
+        "link": "https://leetcode.com/problems/counting-bits/",
+        "notes": "write out result for num=16 to figure out pattern; res[i] = res[i - offset], where offset is the biggest power of 2 <= I;"
+      },
+      {
+        "video_solution": "https://youtu.be/WnPLSRLSANE",
+        "category": "Binary",
+        "name": "Missing Number",
+        "link": "https://leetcode.com/problems/missing-number/",
+        "notes": "compute expected sum - real sum; xor n with each index and value;"
+      },
+      {
+        "video_solution": "https://youtu.be/UcoN6UjAI64",
+        "category": "Binary",
+        "name": "Reverse Bits",
+        "link": "https://leetcode.com/problems/reverse-bits/",
+        "notes": "reverse each of 32 bits;"
+      },
+      {
+        "video_solution": "https://youtu.be/Y0lT9Fck7qI",
+        "category": "Dynamic Programming",
+        "name": "Climbing Stairs",
+        "link": "https://leetcode.com/problems/climbing-stairs/",
+        "notes": "subproblem find (n-1) and (n-2), sum = n;"
+      },
+      {
+        "video_solution": "https://youtu.be/H9bfqozjoqs",
+        "category": "Dynamic Programming",
+        "name": "Coin Change",
+        "link": "https://leetcode.com/problems/coin-change/",
+        "notes": "top-down: recursive dfs, for amount, branch for each coin, cache to store prev coin_count for each amount; bottom-up: compute coins for amount = 1, up until n, using for each coin (amount - coin), cache prev values"
+      },
+      {
+        "video_solution": "https://youtu.be/cjWnW0hdF1Y",
+        "category": "Dynamic Programming",
+        "name": "Longest Increasing Subsequence",
+        "link": "https://leetcode.com/problems/longest-increasing-subsequence/",
+        "notes": "recursive: foreach num, get subseq with num and without num, only include num if prev was less, cache solution of each; dp=subseq length which must end with each num, curr num must be after a prev dp or by itself;"
+      },
+      {
+        "video_solution": "https://youtu.be/Ua0GhsJSlWM",
+        "category": "Dynamic Programming",
+        "name": "Longest Common Subsequence",
+        "link": "https://leetcode.com/problems/longest-common-subsequence/",
+        "notes": "recursive: if first chars are equal find lcs of remaining of each, else max of: lcs of first and remain of 2nd and lcs of 2nd remain of first, cache result; nested forloop to compute the cache without recursion;"
+      },
+      {
+        "video_solution": "https://youtu.be/Sx9NNgInc3A",
+        "category": "Dynamic Programming",
+        "name": "Word Break Problem",
+        "link": "https://leetcode.com/problems/word-break/",
+        "notes": "for each prefix, if prefix is in dict and wordbreak(remaining str)=True, then return True, cache result of wordbreak;"
+      },
+      {
+        "video_solution": "https://youtu.be/GBKI9VSKdGg",
+        "category": "Dynamic Programming",
+        "name": "Combination Sum",
+        "link": "https://leetcode.com/problems/combination-sum/",
+        "notes": "visualize the decision tree, base case is curSum = or > target, each candidate can have children of itself or elements to right of it inorder to elim duplicate solutions;"
+      },
+      {
+        "video_solution": "https://youtu.be/73r3KWiEvyk",
+        "category": "Dynamic Programming",
+        "name": "House Robber",
+        "link": "https://leetcode.com/problems/house-robber/",
+        "notes": "for each num, get max of prev subarr, or num + prev subarr not including last element, store results of prev, and prev not including last element"
+      },
+      {
+        "video_solution": "https://youtu.be/rWAJCfYYOvM",
+        "category": "Dynamic Programming",
+        "name": "House Robber II",
+        "link": "https://leetcode.com/problems/house-robber-ii/",
+        "notes": "subarr = arr without first & last, get max of subarr, then pick which of first/last should be added to it"
+      },
+      {
+        "video_solution": "https://youtu.be/6aEyTjOwlJU",
+        "category": "Dynamic Programming",
+        "name": "Decode Ways",
+        "link": "https://leetcode.com/problems/decode-ways/",
+        "notes": "can cur char be decoded in one or two ways? Recursion -> cache -> iterative dp solution, a lot of edge cases to determine, 52, 31, 29, 10, 20 only decoded one way, 11, 26 decoded two ways"
+      },
+      {
+        "video_solution": "https://youtu.be/IlEsdxuD4lY",
+        "category": "Dynamic Programming",
+        "name": "Unique Paths",
+        "link": "https://leetcode.com/problems/unique-paths/",
+        "notes": "work backwards from solution, store paths for each position in grid, to further optimize, we don’t store whole grid, only need to store prev row;"
+      },
+      {
+        "video_solution": "https://youtu.be/Yan0cv2cLy8",
+        "category": "Dynamic Programming",
+        "name": "Jump Game",
+        "link": "https://leetcode.com/problems/jump-game/",
+        "notes": "visualize the recursive tree, cache solution for O(n) time/mem complexity, iterative is O(1) mem, just iterate backwards to see if element can reach goal node, if yes, then set it equal to goal node, continue;"
+      },
+      {
+        "video_solution": "https://youtu.be/mQeF6bN8hMk",
+        "category": "Graph",
+        "name": "Clone Graph",
+        "link": "https://leetcode.com/problems/clone-graph/",
+        "notes": "recursive dfs, hashmap for visited nodes"
+      },
+      {
+        "video_solution": "https://youtu.be/EgI5nU9etnU",
+        "category": "Graph",
+        "name": "Course Schedule",
+        "link": "https://leetcode.com/problems/course-schedule/",
+        "notes": "build adjacentcy_list with edges, run dfs on each V, if while dfs on V we see V again, then loop exists, otherwise V isnt in a loop, 3 states= not visited, visited, still visiting"
+      },
+      {
+        "video_solution": "https://youtu.be/s-VkcjHqkGI",
+        "category": "Graph",
+        "name": "Pacific Atlantic Water Flow",
+        "link": "https://leetcode.com/problems/pacific-atlantic-water-flow/",
+        "notes": "dfs each cell, keep track of visited, and track which reach pac, atl; dfs on cells adjacent to pac, atl, find overlap of cells that are visited by both pac and atl cells;"
+      },
+      {
+        "video_solution": "https://youtu.be/pV2kpPD66nE",
+        "category": "Graph",
+        "name": "Number of Islands",
+        "link": "https://leetcode.com/problems/number-of-islands/",
+        "notes": "foreach cell, if cell is 1 and unvisited run dfs, increment cound and marking each contigous 1 as visited"
+      },
+      {
+        "video_solution": "https://youtu.be/P6RZZMu_maU",
+        "category": "Graph",
+        "name": "Longest Consecutive Sequence",
+        "link": "https://leetcode.com/problems/longest-consecutive-sequence/",
+        "notes": "use bruteforce and try to optimize, consider the max subseq containing each num; add each num to hashset, for each num if num-1 doesn’t exist, count the consecutive nums after num, ie num+1; there is also a union-find solution;"
+      },
+      {
+        "video_solution": "https://youtu.be/6kTZYvNNyps",
+        "category": "Graph",
+        "name": "Alien Dictionary (Leetcode Premium)",
+        "link": "https://leetcode.com/problems/alien-dictionary/",
+        "notes": "chars of a word not in order, the words are in order, find adjacency list of each unique char by iterating through adjacent words and finding first chars that are different, run topsort on graph and do loop detection;"
+      },
+      {
+        "video_solution": "https://youtu.be/bXsUuownnoQ",
+        "category": "Graph",
+        "name": "Graph Valid Tree (Leetcode Premium)",
+        "link": "https://leetcode.com/problems/graph-valid-tree/",
+        "notes": "union find, if union return false, loop exists, at end size must equal n, or its not connected; dfs to get size and check for loop, since each edge is double, before dfs on neighbor of N, remove N from neighbor list of neighbor;"
+      },
+      {
+        "video_solution": "https://youtu.be/8f1XPm4WOUc",
+        "category": "Graph",
+        "name": "Number of Connected Components in an Undirected Graph (Leetcode Premium)",
+        "link": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/",
+        "notes": "dfs on each node that hasn’t been visited, increment component count, adjacency list; bfs and union find are possible;"
+      },
+      {
+        "video_solution": "https://youtu.be/A8NUOmlwOlM",
+        "category": "Interval",
+        "name": "Insert Interval",
+        "link": "https://leetcode.com/problems/insert-interval/",
+        "notes": "insert new interval in order, then merge intervals; newinterval could only merge with one interval that comes before it, then add remaining intervals;"
+      },
+      {
+        "video_solution": "https://youtu.be/44H3cEC2fFM",
+        "category": "Interval",
+        "name": "Merge Intervals",
+        "link": "https://leetcode.com/problems/merge-intervals/",
+        "notes": "sort each interval, overlapping intervals should be adjacent, iterate and build solution; also graph method, less efficient, more complicated"
+      },
+      {
+        "video_solution": "https://youtu.be/nONCGxWoUfM",
+        "category": "Interval",
+        "name": "Non-overlapping Intervals",
+        "link": "https://leetcode.com/problems/non-overlapping-intervals/",
+        "notes": "instead of removing, count how max num of intervals you can include, sort intervals, dp to compute max intervals up until the i-th interval;"
+      },
+      {
+        "video_solution": "https://youtu.be/PaJxqZVPhbg",
+        "category": "Interval",
+        "name": "Meeting Rooms (Leetcode Premium)",
+        "link": "https://leetcode.com/problems/meeting-rooms/",
+        "notes": "sort intervals by start time, if second interval doesn’t overlap with first, then third def wont overlap with first;"
+      },
+      {
+        "video_solution": "https://youtu.be/FdzJmTCVyJU",
+        "category": "Interval",
+        "name": "Meeting Rooms II (Leetcode Premium)",
+        "link": "https://leetcode.com/problems/meeting-rooms-ii/",
+        "notes": "we care about the points in time where we are starting/ending a meeting, we already are given those, just separate start/end and traverse counting num of meetings going at these points in time; for each meeting check if a prev meeting has finished before curr started, using min heap;"
+      },
+      {
+        "video_solution": "https://youtu.be/G0_I-ZF0S38",
+        "category": "Linked List",
+        "name": "Reverse a Linked List",
+        "link": "https://leetcode.com/problems/reverse-linked-list/",
+        "notes": "iterate through maintaining cur and prev; recursively reverse, return new head of list"
+      },
+      {
+        "video_solution": "https://youtu.be/gBTe7lFR3vc",
+        "category": "Linked List",
+        "name": "Detect Cycle in a Linked List",
+        "link": "https://leetcode.com/problems/linked-list-cycle/",
+        "notes": "dict to remember visited nodes; two pointers at different speeds, if they meet there is loop"
+      },
+      {
+        "video_solution": "https://youtu.be/XIdigk956u0",
+        "category": "Linked List",
+        "name": "Merge Two Sorted Lists",
+        "link": "https://leetcode.com/problems/merge-two-sorted-lists/",
+        "notes": "insert each node from one list into the other"
+      },
+      {
+        "video_solution": "https://youtu.be/q5a5OiGbT6Q",
+        "category": "Linked List",
+        "name": "Merge K Sorted Lists",
+        "link": "https://leetcode.com/problems/merge-k-sorted-lists/",
+        "notes": "divied and conquer, merge lists, N totalnodes, k-lists, O(N*logk). For each list, find min val, insert it into list, use priorityQ to optimize finding min O(N*logk)"
+      },
+      {
+        "video_solution": "https://youtu.be/XVuQxVej6y8",
+        "category": "Linked List",
+        "name": "Remove Nth Node From End Of List",
+        "link": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+        "notes": "use dummy node at head of list, compute len of list; two pointers, second has offset of n from first;"
+      },
+      {
+        "video_solution": "https://youtu.be/S5bfdUTrKLM",
+        "category": "Linked List",
+        "name": "Reorder List",
+        "link": "https://leetcode.com/problems/reorder-list/",
+        "notes": "reverse second half of list, then easily reorder it; non-optimal way is to store list in array;"
+      },
+      {
+        "video_solution": "https://youtu.be/T41rL0L3Pnw",
+        "category": "Matrix",
+        "name": "Set Matrix Zeroes",
+        "link": "https://leetcode.com/problems/set-matrix-zeroes/",
+        "notes": "use sets to keep track of all rows, cols to zero out, after, for each num if it is in a zero row or col then change it to 0; flag first cell in row, and col to mark row/col that needs to be zeroed;"
+      },
+      {
+        "video_solution": "https://youtu.be/BJnMZNwUk1M",
+        "category": "Matrix",
+        "name": "Spiral Matrix",
+        "link": "https://leetcode.com/problems/spiral-matrix/",
+        "notes": "keep track of visited cells; keep track of boundaries, layer-by-layer;"
+      },
+      {
+        "video_solution": "https://youtu.be/fMSJSS7eO1w",
+        "category": "Matrix",
+        "name": "Rotate Image",
+        "link": "https://leetcode.com/problems/rotate-image/",
+        "notes": "rotate layer-by-layer, use that it's a square as advantage, rotate positions in reverse order, store a in temp, a = b, b = c, c = d, d = temp;"
+      },
+      {
+        "video_solution": "https://youtu.be/pfiQ_PS1g8E",
+        "category": "Matrix",
+        "name": "Word Search",
+        "link": "https://leetcode.com/problems/word-search/",
+        "notes": "dfs on each cell, for each search remember visited cells, and remove cur visited cell right before you return from dfs;"
+      },
+      {
+        "video_solution": "https://youtu.be/wiGpQwVHdE0",
+        "category": "String",
+        "name": "Longest Substring Without Repeating Characters",
+        "link": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+        "notes": "sliding window, if we see same char twice within curr window, shift start position;"
+      },
+      {
+        "video_solution": "https://youtu.be/gqXU1UyA8pk",
+        "category": "String",
+        "name": "Longest Repeating Character Replacement",
+        "link": "https://leetcode.com/problems/longest-repeating-character-replacement/",
+        "notes": "PAY ATTENTION: limited to chars A-Z; for each capital char, check if it could create the longest repeating substr, use sliding window to optimize; check if windowlen=1 works, if yes, increment len, if not, shift window right;"
+      },
+      {
+        "video_solution": "https://youtu.be/jSto0O4AJbM",
+        "category": "String",
+        "name": "Minimum Window Substring",
+        "link": "https://leetcode.com/problems/minimum-window-substring/",
+        "notes": "need is num of unique char in T, HAVE is num of char we have valid count for, sliding window, move right until valid, if valid, increment left until invalid, to check validity keep track if the count of each unique char is satisfied;"
+      },
+      {
+        "video_solution": "https://youtu.be/9UtInBqnCgA",
+        "category": "String",
+        "name": "Valid Anagram",
+        "link": "https://leetcode.com/problems/valid-anagram/",
+        "notes": "hashmap to count each char in str1, decrement for str2;"
+      },
+      {
+        "video_solution": "https://youtu.be/vzdNOK2oB2E",
+        "category": "String",
+        "name": "Group Anagrams",
+        "link": "https://leetcode.com/problems/group-anagrams/",
+        "notes": "for each of 26 chars, use count of each char in each word as tuple for key in dict, value is the list of anagrams;"
+      },
+      {
+        "video_solution": "https://youtu.be/WTzjTskDFMg",
+        "category": "String",
+        "name": "Valid Parentheses",
+        "link": "https://leetcode.com/problems/valid-parentheses/",
+        "notes": "push opening brace on stack, pop if matching close brace, at end if stack empty, return true;"
+      },
+      {
+        "video_solution": "https://youtu.be/jJXJ16kPFWg",
+        "category": "String",
+        "name": "Valid Palindrome",
+        "link": "https://leetcode.com/problems/valid-palindrome/",
+        "notes": "left, right pointers, update left and right until each points at alphanum, compare left and right, continue until left >= right, don’t distinguish between upper/lowercase;"
+      },
+      {
+        "video_solution": "https://youtu.be/XYQecbcd6_c",
+        "category": "String",
+        "name": "Longest Palindromic Substring",
+        "link": "https://leetcode.com/problems/longest-palindromic-substring/",
+        "notes": "foreach char in str, consider it were the middle, consider if pali was odd or even;"
+      },
+      {
+        "video_solution": "https://youtu.be/4RACzI5-du8",
+        "category": "String",
+        "name": "Palindromic Substrings",
+        "link": "https://leetcode.com/problems/palindromic-substrings/",
+        "notes": "same as longest palindromic string, each char in str as middle and expand outwards, do same for pali of even len; maybe read up on manachers alg"
+      },
+      {
+        "video_solution": "https://youtu.be/B1k_sxOSgv8",
+        "category": "String",
+        "name": "Encode and Decode Strings (Leetcode Premium)",
+        "link": "https://leetcode.com/problems/encode-and-decode-strings/",
+        "notes": "store length of str before each string and delimiter like '#';"
+      },
+      {
+        "video_solution": "https://youtu.be/hTM3phVI6YQ",
+        "category": "Tree",
+        "name": "Maximum Depth of Binary Tree",
+        "link": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+        "notes": "recursive dfs to find max-depth of subtrees; iterative bfs to count number of levels in tree"
+      },
+      {
+        "video_solution": "https://youtu.be/vRbbcKXCxOw",
+        "category": "Tree",
+        "name": "Same Tree",
+        "link": "https://leetcode.com/problems/same-tree/",
+        "notes": "recursive dfs on both trees at the same time; iterative bfs compare each level of both trees"
+      },
+      {
+        "video_solution": "https://youtu.be/OnSn2XEQ4MY",
+        "category": "Tree",
+        "name": "Invert/Flip Binary Tree",
+        "link": "https://leetcode.com/problems/invert-binary-tree/",
+        "notes": "recursive dfs to invert subtrees; bfs to invert levels, use collections.deque; iterative dfs is easy with stack if doing pre-order traversal"
+      },
+      {
+        "video_solution": "https://youtu.be/Hr5cWUld4vU",
+        "category": "Tree",
+        "name": "Binary Tree Maximum Path Sum",
+        "link": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+        "notes": "helper returns maxpathsum without splitting branches, inside helper we also update maxSum by computing maxpathsum WITH a split;"
+      },
+      {
+        "video_solution": "https://youtu.be/6ZnyEApgFYg",
+        "category": "Tree",
+        "name": "Binary Tree Level Order Traversal",
+        "link": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+        "notes": "iterative bfs, add prev level which doesn't have any nulls to the result;"
+      },
+      {
+        "video_solution": "https://youtu.be/u4JAi2JJhI8",
+        "category": "Tree",
+        "name": "Serialize and Deserialize Binary Tree",
+        "link": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+        "notes": "bfs every single non-null node is added to string, and it's children are added too, even if they're null, deserialize by adding each non-null node to queue, deque node, it's children are next two nodes in string;"
+      },
+      {
+        "video_solution": "https://youtu.be/E36O5SWp-LE",
+        "category": "Tree",
+        "name": "Subtree of Another Tree",
+        "link": "https://leetcode.com/problems/subtree-of-another-tree/",
+        "notes": "traverse s to check if any subtree in s equals t; merkle hashing?"
+      },
+      {
+        "video_solution": "https://youtu.be/ihj4IQGZ2zc",
+        "category": "Tree",
+        "name": "Construct Binary Tree from Preorder and Inorder Traversal",
+        "link": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+        "notes": "first element in pre-order is root, elements left of root in in-order are left subtree, right of root are right subtree, recursively build subtrees;"
+      },
+      {
+        "video_solution": "https://youtu.be/s6ATEkipzow",
+        "category": "Tree",
+        "name": "Validate Binary Search Tree",
+        "link": "https://leetcode.com/problems/validate-binary-search-tree/",
+        "notes": "trick is use built in python min/max values float(\"inf\"), \"-inf\", as parameters; iterative in-order traversal, check each val is greater than prev;"
+      },
+      {
+        "video_solution": "https://youtu.be/5LUXSvjmGCw",
+        "category": "Tree",
+        "name": "Kth Smallest Element in a BST",
+        "link": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+        "notes": "non-optimal store tree in sorted array; iterative dfs in-order and return the kth element processed, go left until null, pop, go right once;"
+      },
+      {
+        "video_solution": "https://youtu.be/gs2LMfuOR9k",
+        "category": "Tree",
+        "name": "Lowest Common Ancestor of BST",
+        "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+        "notes": "compare p, q values to curr node, base case: one is in left, other in right subtree, then curr is lca;"
+      },
+      {
+        "video_solution": "https://youtu.be/oobqoCJlHA0",
+        "category": "Tree",
+        "name": "Implement Trie (Prefix Tree)",
+        "link": "https://leetcode.com/problems/implement-trie-prefix-tree/",
+        "notes": "node has children characters, and bool if its an ending character, node DOESN’T have or need char, since root node doesn’t have a char, only children;"
+      },
+      {
+        "video_solution": "https://youtu.be/BTf05gs_8iU",
+        "category": "Tree",
+        "name": "Add and Search Word",
+        "link": "https://leetcode.com/problems/add-and-search-word-data-structure-design/",
+        "notes": "if char = \".\" run search for remaining portion of word on all of curr nodes children;"
+      },
+      {
+        "video_solution": "https://youtu.be/asbcE9mZz_U",
+        "category": "Tree",
+        "name": "Word Search II",
+        "link": "https://leetcode.com/problems/word-search-ii/",
+        "notes": "trick: I though use trie to store the grid, reverse thinking, instead store dictionary words, dfs on each cell, check if cell's char exists as child of root node in trie, if it does, update currNode, and check neighbors, a word could exist multiple times in grid, so don’t add duplicates;"
+      },
+      {
+        "video_solution": "https://youtu.be/q5a5OiGbT6Q",
+        "category": "Heap",
+        "name": "Merge K Sorted Lists",
+        "link": "https://leetcode.com/problems/merge-k-sorted-lists/",
+        "notes": "we always want the min of the current frontier, we can store frontier in heap of size k for efficient pop/push; divide and conquer merging lists;"
+      },
+      {
+        "video_solution": "https://youtu.be/YPTqKIgVk-k",
+        "category": "Heap",
+        "name": "Top K Frequent Elements",
+        "link": "https://leetcode.com/problems/top-k-frequent-elements/",
+        "notes": "minheap that’s kept at size k, if its bigger than k pop the min, by the end it should be left with k largest;"
+      },
+      {
+        "video_solution": "https://youtu.be/itmhHWaHupI",
+        "category": "Heap",
+        "name": "Find Median from Data Stream",
+        "link": "https://leetcode.com/problems/find-median-from-data-stream/",
+        "notes": "maintain curr median, and all num greater than med in a minHeap, and all num less than med in a maxHeap, after every insertion update median depending on odd/even num of elements;"
+      }
+    ]
+  }
