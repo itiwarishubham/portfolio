@@ -12,9 +12,12 @@ export class ContactComponent implements OnInit {
   messageForm:FormGroup = new FormGroup({
     fullname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
-    message: new FormControl('', [Validators.required, Validators.email])
+    message: new FormControl('', [Validators.required, Validators.email]),
+    recaptchaReactive: new FormControl(null, Validators.required)
   });
   success:boolean = false;
+  captcha: string='';
+  
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
@@ -33,6 +36,10 @@ export class ContactComponent implements OnInit {
           console.error(error);
         }
       );
+  }
+
+  resolved(response: string){
+    this.captcha = response;
   }
 
 }
