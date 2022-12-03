@@ -20,7 +20,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { AuthService } from "./shared/services/auth.service";
 import { DsaComponent } from './dsa/dsa.component';
-import {RecaptchaModule} from 'ng-recaptcha';
+import {RecaptchaModule, RecaptchaFormsModule} from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import {RecaptchaModule} from 'ng-recaptcha';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    RecaptchaModule
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   providers: [AuthService, HttpClientModule,HttpClient],
   bootstrap: [AppComponent]

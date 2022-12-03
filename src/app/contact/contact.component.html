@@ -15,7 +15,7 @@
           <label for="message">Message</label>
           <textarea class="form-control" formControlName="message" id="message" rows="3"></textarea>
         </div>
-        <div> <re-captcha (resolved)="resolved($event)" siteKey="6Lel2FAjAAAAAINwVYp8frhBuusex4zxwlcljOMn" formControlName="recaptchaReactive"></re-captcha> </div>
-        <button type="submit" [disabled]="messageForm.invalid" (click)="onSubmit()" class="btn btn-dark">Submit</button>
+        <div> <re-captcha (resolved)="resolved($event)" siteKey="6LejBlEjAAAAAMrxRAKuIgADNFvD_3tmlgRRXMOq" formControlName="recaptchaReactive"></re-captcha> </div>
+        <button type="submit" [disabled]="!captcha" (click)="onSubmit()" class="btn btn-dark">Submit</button>
       </form>
 </div>

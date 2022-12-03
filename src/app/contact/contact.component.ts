@@ -11,13 +11,13 @@ export class ContactComponent implements OnInit {
 
   messageForm:FormGroup = new FormGroup({
     fullname: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    message: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.email]),
+    message: new FormControl('', [Validators.required, Validators.required]),
     recaptchaReactive: new FormControl(null, Validators.required)
   });
   success:boolean = false;
   captcha: string='';
-  
+
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
