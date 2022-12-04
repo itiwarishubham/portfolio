@@ -11,8 +11,8 @@ export class ContactComponent implements OnInit {
 
   messageForm:FormGroup = new FormGroup({
     fullname: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.email]),
-    message: new FormControl('', [Validators.required, Validators.required]),
+    email: new FormControl('', [Validators.email, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]),
+    message: new FormControl('', [Validators.required]),
     recaptchaReactive: new FormControl(null, Validators.required)
   });
   success:boolean = false;

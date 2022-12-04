@@ -21,6 +21,8 @@ import { environment } from '../environments/environment';
 import { AuthService } from "./shared/services/auth.service";
 import { DsaComponent } from './dsa/dsa.component';
 import {RecaptchaModule, RecaptchaFormsModule} from 'ng-recaptcha';
+import { BlogComponent } from './blog/blog.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import {RecaptchaModule, RecaptchaFormsModule} from 'ng-recaptcha';
     SkillsComponent,
     ProjectsComponent,
     ContactComponent,
-    DsaComponent
+    DsaComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,9 @@ import {RecaptchaModule, RecaptchaFormsModule} from 'ng-recaptcha';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     RecaptchaModule,
-    RecaptchaFormsModule
+    RecaptchaFormsModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [AuthService, HttpClientModule,HttpClient],
   bootstrap: [AppComponent]
