@@ -23,6 +23,7 @@ import { DsaComponent } from './dsa/dsa.component';
 import {RecaptchaModule, RecaptchaFormsModule} from 'ng-recaptcha';
 import { BlogComponent } from './blog/blog.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     ProjectsComponent,
     ContactComponent,
     DsaComponent,
-    BlogComponent
+    BlogComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
