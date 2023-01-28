@@ -1,0 +1,33 @@
+<div class="container">
+    <h1 class="text-center">Upcoming Movies</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card" *ngFor='let movieTitle of movieTitles;'>
+          <img src={{movieTitle.image}} alt="Black Panther: Wakanda Forever" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{movieTitle.name}}</h5>
+            <a (click)="toggleVideoModal(movieTitle)" class="btn">Watch Now</a>
+            <p class="card-text">Released on: {{movieTitle.releasedate}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Video Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="videoModal">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{name}}</h5>
+          <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close" (click)="closeVideoModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/video_id?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen id="videoPlayer"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>

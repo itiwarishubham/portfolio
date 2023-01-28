@@ -7,6 +7,8 @@ import { ContactComponent } from './contact/contact.component';
 import { DsaComponent } from './dsa/dsa.component';
 import { BlogComponent } from './blog/blog.component';
 import { CoursesComponent } from './courses/courses.component';
+import { ChatComponent } from './chat/chat.component';
+import { MoviesComponent } from './movies/movies.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'dsa', component: DsaComponent},
   { path: 'blog', component: BlogComponent},
-  { path: 'courses', component: CoursesComponent}
+  { path: 'courses', component: CoursesComponent},
+  { path: 'chat', component: ChatComponent},
+  { path: 'movie', component: MoviesComponent}
 ];
 
 @NgModule({

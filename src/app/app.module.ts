@@ -24,6 +24,9 @@ import {RecaptchaModule, RecaptchaFormsModule} from 'ng-recaptcha';
 import { BlogComponent } from './blog/blog.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { CoursesComponent } from './courses/courses.component';
+import { ChatComponent } from './chat/chat.component';
+import { MoviesComponent } from './movies/movies.component';
+import { VideoplayerComponent } from './videoplayer/videoplayer.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { CoursesComponent } from './courses/courses.component';
     ContactComponent,
     DsaComponent,
     BlogComponent,
-    CoursesComponent
+    CoursesComponent,
+    ChatComponent,
+    MoviesComponent,
+    VideoplayerComponent
   ],
   imports: [
     BrowserModule,

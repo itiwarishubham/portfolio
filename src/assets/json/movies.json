@@ -1,0 +1,10 @@
+{
+    "movies":[
+        {
+            "uid":"KLucs7B8JDA",
+            "image": "assets/images/test.png",
+            "name": "Badshah",
+            "releasedate":"N/A"
+        }
+    ]
+}
