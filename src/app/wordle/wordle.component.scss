@@ -18,7 +18,7 @@
     margin: 2px;
     text-transform: uppercase;
     box-sizing: border-box;
-    font-family: "Verdana", sans-serif;
+    font-family: myFont;
     font-size: 2em;
   }
   
@@ -179,6 +179,7 @@
   margin-right: 5px;
   background-color: #76BA99;
   cursor: pointer;
+  font-family: myFont;
 }
 
 .backspace {
@@ -213,6 +214,7 @@ h1{
       width: 23px;
       height: 30px;
       font-size: 20px;
+      font-family: myFont;
     }
   }
   .showNewGame{
