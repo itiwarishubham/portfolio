@@ -27,6 +27,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { ChatComponent } from './chat/chat.component';
 import { MoviesComponent } from './movies/movies.component';
 import { VideoplayerComponent } from './videoplayer/videoplayer.component';
+import { WordleComponent } from './wordle/wordle.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { VideoplayerComponent } from './videoplayer/videoplayer.component';
     CoursesComponent,
     ChatComponent,
     MoviesComponent,
-    VideoplayerComponent
+    VideoplayerComponent,
+    WordleComponent
   ],
   imports: [
     BrowserModule,

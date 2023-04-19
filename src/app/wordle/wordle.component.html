@@ -1,0 +1,67 @@
+<div class="container">
+    <h1>WORDLE</h1>
+    <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Rules</h3>
+          <ul>
+            <li>The game generates a secret word consisting of 5 unique letters.</li>
+            <li>The player must guess the secret word by entering a 5-letter word.</li>
+            <li>After each guess, the game provides feedback on how many letters are correct:
+              <ul>
+                <li>A letter in white indicates that it is in the correct position in the secret word.</li>
+                <li>A letter in black indicates that it is in the secret word, but in a different position.</li>
+                <li>A letter in gray indicates that it is not in the secret word at all.</li>
+                <li>A letter in red indicates that it is not a valid word.</li>
+              </ul>
+            </li>
+            <li>The player has 6 attempts to guess the secret word.</li>
+            <li>If the player correctly guesses the secret word within 6 attempts, they win the game. Otherwise, they lose.</li>
+          </ul>
+        </div>
+      </div>
+      
+    <div id="letters">
+        <div *ngFor="let i of numbers; let j = index" class="regularcontrast letter" #tile id="{{j}}">
+        </div>
+        <button [class]="{'showNewGame': isGameOver, 'hideNewGame': !isGameOver}" (click) = "playAgain()">New Game</button>
+    </div>
+    <div class="keypad-container">
+        <div class="keypad">
+            <div class="row">
+                <div class="key" id="q">Q</div>
+                <div class="key" id="w">W</div>
+                <div class="key" id="e">E</div>
+                <div class="key" id="r">R</div>
+                <div class="key" id="t">T</div>
+                <div class="key" id="y">Y</div>
+                <div class="key" id="u">U</div>
+                <div class="key" id="i">I</div>
+                <div class="key" id="o">O</div>
+                <div class="key" id="p">P</div>
+                <div class="key backspace" id="backspace">&#9003;</div>
+            </div>
+            <div class="row">
+                <div class="key" id="a">A</div>
+                <div class="key" id="s">S</div>
+                <div class="key" id="d">D</div>
+                <div class="key" id="f">F</div>
+                <div class="key" id="g">G</div>
+                <div class="key" id="h">H</div>
+                <div class="key" id="j">J</div>
+                <div class="key" id="k">K</div>
+                <div class="key" id="l">L</div>
+                <div class="key enter" id="enter">&#9166;</div>
+            </div>
+            <div class="row">
+                <div class="key" id="z">Z</div>
+                <div class="key" id="x">X</div>
+                <div class="key" id="c">C</div>
+                <div class="key" id="v">V</div>
+                <div class="key" id="b">B</div>
+                <div class="key" id="n">N</div>
+                <div class="key" id="m">M</div>
+            </div>
+        </div>
+    </div>
+
+</div>
