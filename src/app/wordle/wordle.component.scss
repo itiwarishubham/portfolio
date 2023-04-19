@@ -194,6 +194,14 @@ h1{
     margin: 2%;
     font-family: myFont;
 }
+/* Center vertically and horizontally */
+.text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh; /* Set the height of the container to the viewport height */
+}
+
 .card{
   background-color: #76BA99;
   font-family: myFont;

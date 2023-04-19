@@ -1,67 +1,94 @@
 <div class="container">
-    <h1>WORDLE</h1>
-    <div class="card">
-        <div class="card-body">
-          <h3 class="card-title">Rules</h3>
+  <h1>WORDLE</h1>
+  <!-- Button trigger modal -->
+  <div class="text-center">
+    <button type="button" id="modalButton" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+      How to play wordle?
+    </button>
+  </div>
+  <div id="letters">
+    <div *ngFor="let i of numbers; let j = index" class="regularcontrast letter" #tile id="{{j}}">
+    </div>
+    <button [class]="{'showNewGame': isGameOver, 'hideNewGame': !isGameOver}" (click)="playAgain()">New Game</button>
+  </div>
+  <div class="keypad-container">
+    <div class="keypad">
+      <div class="row">
+        <button class="key" (click)="onClick($event)" value="Q" id="q">Q</button>
+        <button class="key" (click)="onClick($event)" value="W" id="w">W</button>
+        <button class="key" (click)="onClick($event)" value="E" id="e">E</button>
+        <button class="key" (click)="onClick($event)" value="R" id="r">R</button>
+        <button class="key" (click)="onClick($event)" value="T" id="t">T</button>
+        <button class="key" (click)="onClick($event)" value="Y" id="y">Y</button>
+        <button class="key" (click)="onClick($event)" value="U" id="u">U</button>
+        <button class="key" (click)="onClick($event)" value="I" id="i">I</button>
+        <button class="key" (click)="onClick($event)" value="O" id="o">O</button>
+        <button class="key" (click)="onClick($event)" value="P" id="p">P</button>
+        <button class="key backspace" (click)="onClick($event)" value="backspace" id="backspace">&#9003;</button>
+      </div>
+      <div class="row">
+        <button class="key" (click)="onClick($event)" value="A" id="a">A</button>
+        <button class="key" (click)="onClick($event)" value="S" id="s">S</button>
+        <button class="key" (click)="onClick($event)" value="D" id="d">D</button>
+        <button class="key" (click)="onClick($event)" value="F" id="f">F</button>
+        <button class="key" (click)="onClick($event)" value="G" id="g">G</button>
+        <button class="key" (click)="onClick($event)" value="H" id="h">H</button>
+        <button class="key" (click)="onClick($event)" value="J" id="j">J</button>
+        <button class="key" (click)="onClick($event)" value="K" id="k">K</button>
+        <button class="key" (click)="onClick($event)" value="L" id="l">L</button>
+        <button class="key enter" (click)="onClick($event)" value="enter" id="enter">&#9166;</button>
+      </div>
+      <div class="row">
+        <button class="key" (click)="onClick($event)" value="Z" id="z">Z</button>
+        <button class="key" (click)="onClick($event)" value="X" id="x">X</button>
+        <button class="key" (click)="onClick($event)" value="C" id="c">C</button>
+        <button class="key" (click)="onClick($event)" value="V" id="v">V</button>
+        <button class="key" (click)="onClick($event)" value="B" id="b">B</button>
+        <button class="key" (click)="onClick($event)" value="N" id="n">N</button>
+        <button class="key" (click)="onClick($event)" value="M" id="m">M</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" #exampleModal id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">WORDLE RULES</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
           <ul>
             <li>The game generates a secret word consisting of 5 unique letters.</li>
             <li>The player must guess the secret word by entering a 5-letter word.</li>
             <li>After each guess, the game provides feedback on how many letters are correct:
               <ul>
-                <li>A letter in green indicates that it is in the correct position in the secret word.</li>
-                <li>A letter in orange indicates that it is in the secret word, but in a different position.</li>
-                <li>A letter in gray indicates that it is not in the secret word at all.</li>
-                <li>A letter in red indicates that it is not a valid word.</li>
+                <li>A letter in <span style="color:green">green</span> indicates that it is in the correct position in
+                  the secret word.</li>
+                <li>A letter in <span style="color:orange">orange</span> indicates that it is in the secret word, but in
+                  a different position.</li>
+                <li>A letter in <span style="color:gray">gray</span> indicates that it is not in the secret word at all.
+                </li>
+                <li>A letter in <span style="color:red">red</span> indicates that it is not a valid word.</li>
               </ul>
             </li>
             <li>The player has 6 attempts to guess the secret word.</li>
-            <li>If the player correctly guesses the secret word within 6 attempts, they win the game. Otherwise, they lose.</li>
+            <li>If the player correctly guesses the secret word within 6 attempts, they win the game. Otherwise, they
+              lose.</li>
           </ul>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
-      
-    <div id="letters">
-        <div *ngFor="let i of numbers; let j = index" class="regularcontrast letter" #tile id="{{j}}">
-        </div>
-        <button [class]="{'showNewGame': isGameOver, 'hideNewGame': !isGameOver}" (click) = "playAgain()">New Game</button>
     </div>
-    <div class="keypad-container">
-        <div class="keypad">
-            <div class="row">
-                <button class="key" (click) = "onClick($event)" value="Q" id="q">Q</button>
-                <button class="key" (click) = "onClick($event)" value="W" id="w">W</button>
-                <button class="key" (click) = "onClick($event)" value="E" id="e">E</button>
-                <button class="key" (click) = "onClick($event)" value="R" id="r">R</button>
-                <button class="key" (click) = "onClick($event)" value="T" id="t">T</button>
-                <button class="key" (click) = "onClick($event)" value="Y" id="y">Y</button>
-                <button class="key" (click) = "onClick($event)" value="U" id="u">U</button>
-                <button class="key" (click) = "onClick($event)" value="I" id="i">I</button>
-                <button class="key" (click) = "onClick($event)" value="O" id="o">O</button>
-                <button class="key" (click) = "onClick($event)" value="P" id="p">P</button>
-                <button class="key backspace" (click) = "onClick($event)" value="backspace" id="backspace">&#9003;</button>
-            </div>
-            <div class="row">
-                <button class="key" (click) = "onClick($event)" value="A" id="a">A</button>
-                <button class="key" (click) = "onClick($event)" value="S" id="s">S</button>
-                <button class="key" (click) = "onClick($event)" value="D" id="d">D</button>
-                <button class="key" (click) = "onClick($event)" value="F" id="f">F</button>
-                <button class="key" (click) = "onClick($event)" value="G" id="g">G</button>
-                <button class="key" (click) = "onClick($event)" value="H" id="h">H</button>
-                <button class="key" (click) = "onClick($event)" value="J" id="j">J</button>
-                <button class="key" (click) = "onClick($event)" value="K" id="k">K</button>
-                <button class="key" (click) = "onClick($event)" value="L" id="l">L</button>
-                <button class="key enter" (click) = "onClick($event)" value="enter" id="enter">&#9166;</button>
-            </div>
-            <div class="row">
-                <button class="key" (click) = "onClick($event)" value="Z" id="z">Z</button>
-                <button class="key" (click) = "onClick($event)" value="X" id="x">X</button>
-                <button class="key" (click) = "onClick($event)" value="C" id="c">C</button>
-                <button class="key" (click) = "onClick($event)" value="V" id="v">V</button>
-                <button class="key" (click) = "onClick($event)" value="B" id="b">B</button>
-                <button class="key" (click) = "onClick($event)" value="N" id="n">N</button>
-                <button class="key" (click) = "onClick($event)" value="M" id="m">M</button>
-            </div>
-        </div>
-    </div>
+  </div>
+
+
 
 </div>
