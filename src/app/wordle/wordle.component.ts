@@ -101,6 +101,8 @@ export class WordleComponent implements OnInit {
     div.style.borderStyle = 'dashed'
   }
   resetTileColor() {
+    const last = document.getElementById('' + (this.tileCount - 1)) as HTMLDivElement;
+    last.style.borderStyle = 'solid'
     for (let i = 0; i < 30; i++) {
       let div = document.getElementById('' + i) as HTMLDivElement;
       div.innerHTML = ''
@@ -124,27 +126,32 @@ export class WordleComponent implements OnInit {
     }
   }
 
+  resetInvalidWordRowColor(reset: boolean){
+    if(reset){
+      for(let i = this.start;i<this.end;i++){
+        const div = document.getElementById('' + i) as HTMLDivElement;
+        div.style.borderColor = ''
+      }
+    }
+  }
+
   focusOnTile(key: string) {
     if (this.currentWord.length < 5 && this.tileCount < 30) {
-
       if (key === 'backspace' && this.currentWord.length < 5) {
         const cur = document.getElementById('' + (this.tileCount + 1)) as HTMLDivElement;
         const prev = document.getElementById('' + (this.tileCount)) as HTMLDivElement;
-        cur.style.borderStyle = 'solid'
+        if(cur)cur.style.borderStyle = 'solid'
         prev.style.borderStyle = 'dashed'
-        prev.style.borderColor = ''
+        let color = prev.style.borderColor === 'red';
+        this.resetInvalidWordRowColor(color)
       } else {
-        console.log(this.tileCount +", " + this.currentWord.length)
         const cur = document.getElementById('' + (this.tileCount)) as HTMLDivElement;
         const prev = document.getElementById('' + (this.tileCount - 1)) as HTMLDivElement;
         cur.style.borderStyle = key === 'backspace' ? 'solid' : 'dashed'
         prev.style.borderStyle = key === 'backspace' ? 'dashed' : 'solid'
-        prev.style.borderColor = ''
+        let color = prev.style.borderColor === 'red';
+        this.resetInvalidWordRowColor(color)
       }
-    } else if (this.currentWord.length == 5 && this.tileCount == 30) {
-      const last = document.getElementById('' + (this.tileCount - 1)) as HTMLDivElement;
-      last.style.borderColor = 'black'
-      last.style.borderStyle = 'solid'
     }
   }
 
