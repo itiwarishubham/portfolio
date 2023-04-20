@@ -74,15 +74,21 @@ export class WordleComponent implements OnInit {
 
   changeColor(colorArr: string[]) {
     for (let i = this.start, j = 0; i < this.end; i++, j++) {
-      const div = document.getElementById('' + i) as HTMLDivElement;
-      div.style.backgroundColor = colorArr[j];
+      if (colorArr[j] === 'red') {
+        const div = document.getElementById('' + i) as HTMLDivElement;
+        div.style.borderColor = colorArr[j];
+      } else {
+        const div = document.getElementById('' + i) as HTMLDivElement;
+        div.style.backgroundColor = colorArr[j];
+      }
+
       if (colorArr[j] !== 'red') {
         const keypadDiv = document.getElementById('' + this.currentWord.charAt(j)) as HTMLDivElement;
         keypadDiv.style.backgroundColor = colorArr[j];
       }
     }
   }
-  
+
   playAgain() {
     this.resetTileColor();
     this.resetKeyPadColor()
@@ -120,17 +126,20 @@ export class WordleComponent implements OnInit {
 
   focusOnTile(key: string) {
     if (this.currentWord.length < 5 && this.tileCount < 30) {
-      
+
       if (key === 'backspace' && this.currentWord.length < 5) {
         const cur = document.getElementById('' + (this.tileCount + 1)) as HTMLDivElement;
         const prev = document.getElementById('' + (this.tileCount)) as HTMLDivElement;
         cur.style.borderStyle = 'solid'
         prev.style.borderStyle = 'dashed'
+        prev.style.borderColor = ''
       } else {
+        console.log(this.tileCount +", " + this.currentWord.length)
         const cur = document.getElementById('' + (this.tileCount)) as HTMLDivElement;
         const prev = document.getElementById('' + (this.tileCount - 1)) as HTMLDivElement;
-        cur.style.borderStyle = key === 'backspace' && this.tileCount > 0 ? 'solid' : 'dashed'
-        prev.style.borderStyle = key === 'backspace' && this.tileCount > 0 ? 'dashed' : 'solid'
+        cur.style.borderStyle = key === 'backspace' ? 'solid' : 'dashed'
+        prev.style.borderStyle = key === 'backspace' ? 'dashed' : 'solid'
+        prev.style.borderColor = ''
       }
     } else if (this.currentWord.length == 5 && this.tileCount == 30) {
       const last = document.getElementById('' + (this.tileCount - 1)) as HTMLDivElement;
@@ -139,14 +148,17 @@ export class WordleComponent implements OnInit {
     }
   }
 
+  onDelete(key: string) {
+    let ele = document.getElementById("" + (--this.tileCount)) as HTMLDivElement
+    if (ele) ele.innerHTML = ''
+    this.currentWord = this.currentWord.slice(0, -1)
+    this.focusOnTile(key)
+  }
+
   playing(key: string, event: MouseEvent | KeyboardEvent) {
     if (this.currentWord.length == 5) {
       if (key === 'backspace') {
-        let ele = document.getElementById("" + (--this.tileCount)) as HTMLDivElement
-        if (ele) ele.innerHTML = ''
-        this.currentWord = this.currentWord.slice(0, -1)
-        this.focusOnTile(key)
-        //console.log("backspace: " + this.currentWord + ", " + key)
+        this.onDelete(key)
       } else if (key === 'enter') {
         if (this.isInWords(this.currentWord)) {
           let res: string[] = this.charMatches(this.currentWord, this.secretWord);
@@ -161,28 +173,21 @@ export class WordleComponent implements OnInit {
           this.start = this.end;
           this.end = this.start + 5
           this.focusOnTile(key)
-          //console.log("enter: " + this.currentWord + ", " + key)
-          //console.log("res: " + res + ", " + this.secretWord)
         } else {
           const res: string[] = new Array(10).fill('red');
           this.changeColor(res)
-          //console.log("res: " + this.isInWords(this.currentWord))
         }
       }
     } else {
       if (key === 'backspace' && this.currentWord.length != 0) {
-        let ele = document.getElementById("" + (--this.tileCount)) as HTMLDivElement
-        if (ele) ele.innerHTML = ''
-        this.currentWord = this.currentWord.slice(0, -1)
-        this.focusOnTile(key)
+        this.onDelete(key)
       } else if (key === 'backspace' || key === 'enter') {
-        event.preventDefault()
+        event.preventDefault(); // do Nothing
       } else {
         let ele = document.getElementById("" + (this.tileCount++))
         this.updateCurrentWord(key)
         if (ele) ele.innerHTML = key
         this.focusOnTile(key)
-        //console.log("alpha: " + this.currentWord + ", " + key)
       }
     }
   }
