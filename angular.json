@@ -39,7 +39,8 @@
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/froala-editor/css/froala_editor.pkgd.min.css",
-              "node_modules/froala-editor/css/froala_style.min.css"
+              "node_modules/froala-editor/css/froala_style.min.css",
+              "node_modules/animate.css/animate.css"
             ]
           },
           "configurations": {

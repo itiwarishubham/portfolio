@@ -14,7 +14,7 @@
     height: 60px;
     padding: 0px 0;
     text-align: center;
-    border: 1px solid grey;
+    border: 5px solid black;
     margin: 2px;
     text-transform: uppercase;
     box-sizing: border-box;
@@ -157,7 +157,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* set height to occupy full viewport */
+    height: 40vh; /* set height to occupy full viewport */
   }
   
 .row {
@@ -216,6 +216,9 @@ h1{
       font-size: 20px;
       font-family: myFont;
     }
+    .keypad-container {
+      height: 20vh; /* set height to occupy full viewport */
+    }
   }
   .showNewGame{
     background-color: black;
@@ -227,4 +230,7 @@ h1{
   }
   .hideNewGame{
     display: none;
+  }
+  #modalButton{
+    margin-bottom: 20px;
   }

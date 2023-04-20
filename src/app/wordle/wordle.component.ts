@@ -22,7 +22,6 @@ export class WordleComponent implements OnInit {
   }
   ngAfterViewInit() {
     const div = document.getElementById('' + this.tileCount) as HTMLDivElement;
-    console.log(div.style.borderStyle)
     div.style.borderStyle = 'dashed'
   }
 
@@ -36,16 +35,7 @@ export class WordleComponent implements OnInit {
 
   onClick(event: MouseEvent) {
     const key = (event.currentTarget as HTMLButtonElement).value.toLowerCase();
-    console.log(this.isGameOver + ", " + (this.guessCount))
     this.playing(key, event)
-    if (this.tileCount < 30) {
-      const cur = document.getElementById('' + this.tileCount) as HTMLDivElement;
-      const prev = document.getElementById('' + (this.tileCount - 1)) as HTMLDivElement;
-      cur.style.borderStyle = 'dashed'
-      // cur.style.borderColor='blue'
-      // prev.style.borderColor='black'
-      prev.style.borderStyle = 'solid'
-    }
   }
   @HostListener('document:keyup', ['$event'])
   onKeyUp(event: KeyboardEvent) {
@@ -54,14 +44,6 @@ export class WordleComponent implements OnInit {
     // Allow only alphabet characters, backspace and enter key
     if ((keyCode >= 65 && keyCode <= 90) || (key === 'backspace') || (keyCode === 13)) {
       this.playing(key, event)
-      if (this.tileCount < 30) {
-        const cur = document.getElementById('' + this.tileCount) as HTMLDivElement;
-        const prev = document.getElementById('' + (this.tileCount - 1)) as HTMLDivElement;
-        cur.style.borderStyle = 'dashed'
-        // cur.style.borderColor='blue'
-        // prev.style.borderColor='black'
-        prev.style.borderStyle = 'solid'
-      }
     }
   }
 
@@ -93,11 +75,14 @@ export class WordleComponent implements OnInit {
   changeColor(colorArr: string[]) {
     for (let i = this.start, j = 0; i < this.end; i++, j++) {
       const div = document.getElementById('' + i) as HTMLDivElement;
-      const keypadDiv = document.getElementById('' + this.currentWord.charAt(j)) as HTMLDivElement;
       div.style.backgroundColor = colorArr[j];
-      keypadDiv.style.backgroundColor = colorArr[j];
+      if (colorArr[j] !== 'red') {
+        const keypadDiv = document.getElementById('' + this.currentWord.charAt(j)) as HTMLDivElement;
+        keypadDiv.style.backgroundColor = colorArr[j];
+      }
     }
   }
+  
   playAgain() {
     this.resetTileColor();
     this.resetKeyPadColor()
@@ -106,6 +91,8 @@ export class WordleComponent implements OnInit {
     this.secretWord = this.generateSecretWord()
     this.isGameOver = false;
     this.guessCount = 0
+    const div = document.getElementById('' + this.tileCount) as HTMLDivElement;
+    div.style.borderStyle = 'dashed'
   }
   resetTileColor() {
     for (let i = 0; i < 30; i++) {
@@ -131,12 +118,34 @@ export class WordleComponent implements OnInit {
     }
   }
 
+  focusOnTile(key: string) {
+    if (this.currentWord.length < 5 && this.tileCount < 30) {
+      
+      if (key === 'backspace' && this.currentWord.length < 5) {
+        const cur = document.getElementById('' + (this.tileCount + 1)) as HTMLDivElement;
+        const prev = document.getElementById('' + (this.tileCount)) as HTMLDivElement;
+        cur.style.borderStyle = 'solid'
+        prev.style.borderStyle = 'dashed'
+      } else {
+        const cur = document.getElementById('' + (this.tileCount)) as HTMLDivElement;
+        const prev = document.getElementById('' + (this.tileCount - 1)) as HTMLDivElement;
+        cur.style.borderStyle = key === 'backspace' && this.tileCount > 0 ? 'solid' : 'dashed'
+        prev.style.borderStyle = key === 'backspace' && this.tileCount > 0 ? 'dashed' : 'solid'
+      }
+    } else if (this.currentWord.length == 5 && this.tileCount == 30) {
+      const last = document.getElementById('' + (this.tileCount - 1)) as HTMLDivElement;
+      last.style.borderColor = 'black'
+      last.style.borderStyle = 'solid'
+    }
+  }
+
   playing(key: string, event: MouseEvent | KeyboardEvent) {
     if (this.currentWord.length == 5) {
       if (key === 'backspace') {
-        let ele = document.getElementById("" + (--this.tileCount))
+        let ele = document.getElementById("" + (--this.tileCount)) as HTMLDivElement
         if (ele) ele.innerHTML = ''
         this.currentWord = this.currentWord.slice(0, -1)
+        this.focusOnTile(key)
         //console.log("backspace: " + this.currentWord + ", " + key)
       } else if (key === 'enter') {
         if (this.isInWords(this.currentWord)) {
@@ -151,6 +160,7 @@ export class WordleComponent implements OnInit {
           this.currentWord = ''
           this.start = this.end;
           this.end = this.start + 5
+          this.focusOnTile(key)
           //console.log("enter: " + this.currentWord + ", " + key)
           //console.log("res: " + res + ", " + this.secretWord)
         } else {
@@ -161,15 +171,17 @@ export class WordleComponent implements OnInit {
       }
     } else {
       if (key === 'backspace' && this.currentWord.length != 0) {
-        let ele = document.getElementById("" + (--this.tileCount))
+        let ele = document.getElementById("" + (--this.tileCount)) as HTMLDivElement
         if (ele) ele.innerHTML = ''
         this.currentWord = this.currentWord.slice(0, -1)
+        this.focusOnTile(key)
       } else if (key === 'backspace' || key === 'enter') {
         event.preventDefault()
       } else {
         let ele = document.getElementById("" + (this.tileCount++))
         this.updateCurrentWord(key)
         if (ele) ele.innerHTML = key
+        this.focusOnTile(key)
         //console.log("alpha: " + this.currentWord + ", " + key)
       }
     }
