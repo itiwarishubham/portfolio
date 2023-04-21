@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import words from '../../assets/json/words.json';
+import { WordleService } from '../service/wordle.service';
 
 @Component({
   selector: 'app-wordle',
@@ -14,8 +15,9 @@ export class WordleComponent implements OnInit {
   start: number = 0
   isGameOver: boolean = false
   guessCount: number = 0
+  meaning: string = ''
 
-  constructor() {
+  constructor(private wordleService: WordleService) {
   }
 
   ngOnInit() {
@@ -27,11 +29,25 @@ export class WordleComponent implements OnInit {
 
   numbers: number[] = Array.from({ length: 30 }, (_, i) => i);
   generateSecretWord(): string {
-    const index = Math.floor(Math.random() * words.length);
-    return words[index];
+    const word = words[Math.floor(Math.random() * words.length)];
+    this.setMeaning(word)
+    return word;
   }
   // Define the target word as a string
   secretWord: string = this.generateSecretWord();
+
+  setMeaning(word: string){
+    this.wordleService.getMeaning(word).subscribe(
+      response => {
+        this.meaning = response.meanings[0].definitions[0].definition
+        console.log(this.meaning +", "+this.secretWord);
+      },
+      error => {
+        this.meaning = error.error
+        console.log(error.error+", "+this.secretWord);
+      }
+    );
+  }
 
   onClick(event: MouseEvent) {
     const key = (event.currentTarget as HTMLButtonElement).value.toLowerCase();
@@ -108,6 +124,7 @@ export class WordleComponent implements OnInit {
       div.innerHTML = ''
       div.style.color = ''
       div.style.backgroundColor = '';
+      div.style.borderStyle = '';
       this.start = 0
       this.end = 5
       this.tileCount = 0

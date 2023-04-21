@@ -9,6 +9,7 @@
   <div id="letters">
     <div *ngFor="let i of numbers; let j = index" class="regularcontrast letter" #tile id="{{j}}">
     </div>
+    <div class="defination">{{"Hint: "+ meaning}}</div>
     <button [class]="{'showNewGame': isGameOver, 'hideNewGame': !isGameOver}" (click)="playAgain()">New Game</button>
   </div>
   <div class="keypad-container">
