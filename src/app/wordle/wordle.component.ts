@@ -40,11 +40,9 @@ export class WordleComponent implements OnInit {
     this.wordleService.getMeaning(word).subscribe(
       response => {
         this.meaning = response.meanings[0].definitions[0].definition
-        console.log(this.meaning +", "+this.secretWord);
       },
       error => {
         this.meaning = error.error
-        console.log(error.error+", "+this.secretWord);
       }
     );
   }
