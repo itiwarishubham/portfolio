@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~13.3.12",
     "@angular/router": "~13.3.12",
     "@fortawesome/fontawesome-free": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "angular-froala-wysiwyg": "^4.0.16",
     "angular-gtag": "^1.0.4",
     "animate.css": "^4.1.1",

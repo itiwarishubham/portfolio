@@ -17,6 +17,7 @@ export class WordleComponent implements OnInit {
   guessCount: number = 0
   meaning: string = ''
 
+  audio: HTMLAudioElement = new Audio('assets/audio/game.mp3');
   constructor(private wordleService: WordleService) {
   }
 
@@ -35,6 +36,17 @@ export class WordleComponent implements OnInit {
   }
   // Define the target word as a string
   secretWord: string = this.generateSecretWord();
+
+  toggleVolume() {
+    const soundIcon = document.getElementById("sound-icon");
+    if(soundIcon?.classList.value === 'fas fa-volume-xmark'){
+      this.playAudio()
+    }else{
+      this.stopAudio()
+    }
+    soundIcon?.classList.toggle("fa-volume-xmark");
+    soundIcon?.classList.toggle("fa-volume-high");
+  }
 
   setMeaning(word: string){
     this.wordleService.getMeaning(word).subscribe(
@@ -60,6 +72,19 @@ export class WordleComponent implements OnInit {
       this.playing(key, event)
     }
   }
+  playAudio() {
+    this.audio.loop = true;
+    this.audio.play();
+  }
+
+  pauseAudio() {
+    this.audio.pause();
+  }
+  
+  stopAudio() {
+    this.audio.pause();
+    this.audio.load();
+  }  
 
   updateCurrentWord(char: string) {
     this.currentWord += char
@@ -94,6 +119,7 @@ export class WordleComponent implements OnInit {
       } else {
         const div = document.getElementById('' + i) as HTMLDivElement;
         div.style.backgroundColor = colorArr[j];
+        //div.style.color = 'white'
       }
 
       if (colorArr[j] !== 'red') {
@@ -178,7 +204,7 @@ export class WordleComponent implements OnInit {
   }
 
   playing(key: string, event: MouseEvent | KeyboardEvent) {
-    if (this.currentWord.length == 5) {
+    if (this.currentWord.length == 5 && !this.isGameOver) {
       if (key === 'backspace') {
         this.onDelete(key)
       } else if (key === 'enter') {
@@ -200,7 +226,7 @@ export class WordleComponent implements OnInit {
           this.changeColor(res)
         }
       }
-    } else {
+    } else if(!this.isGameOver) {
       if (key === 'backspace' && this.currentWord.length != 0) {
         this.onDelete(key)
       } else if (key === 'backspace' || key === 'enter') {

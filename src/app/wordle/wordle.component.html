@@ -3,13 +3,14 @@
   <!-- Button trigger modal -->
   <div class="text-center">
     <button type="button" id="modalButton" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
-      How to play wordle?
+      How to play wordle? 
     </button>
+    <button type="button" (click)="toggleVolume()" id="sound-toggle" class="btn"><i id="sound-icon" class="fas fa-volume-xmark"></i></button>
   </div>
   <div id="letters">
     <div *ngFor="let i of numbers; let j = index" class="regularcontrast letter" #tile id="{{j}}">
     </div>
-    <div class="defination">{{"Hint: "+ meaning}}</div>
+    <div class="definition">{{"Hint: "+ meaning}}</div>
     <button [class]="{'showNewGame': isGameOver, 'hideNewGame': !isGameOver}" (click)="playAgain()">New Game</button>
   </div>
   <div class="keypad-container">
