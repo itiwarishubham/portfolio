@@ -12,4 +12,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  redirect(){
+    window.location.href = "https://percent-matters.mini.store";
+  }
 }
