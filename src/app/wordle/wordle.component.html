@@ -5,7 +5,8 @@
     <button type="button" id="modalButton" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
       How to play wordle? 
     </button>
-    <button type="button" (click)="toggleVolume()" id="sound-toggle" class="btn"><i id="sound-icon" class="fas fa-volume-xmark"></i></button>
+    <!-- <button type="button" (click)="toggleVolume()" id="sound-toggle" class="btn"><i id="sound-icon" class="fas fa-volume-xmark"></i></button> -->
+    <div class="score">Streak: {{score}} </div>
   </div>
   <div id="letters">
     <div *ngFor="let i of numbers; let j = index" class="regularcontrast letter" #tile id="{{j}}">

@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import words from '../../assets/json/words.json';
 import { WordleService } from '../service/wordle.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-wordle',
@@ -16,9 +17,25 @@ export class WordleComponent implements OnInit {
   isGameOver: boolean = false
   guessCount: number = 0
   meaning: string = ''
+  score: number=0;
+  storage = window.localStorage;
 
-  audio: HTMLAudioElement = new Audio('assets/audio/game.mp3');
-  constructor(private wordleService: WordleService) {
+  //audio: HTMLAudioElement = new Audio('assets/audio/game.mp3');
+  constructor(private wordleService: WordleService, private userService: UserService) {
+  }
+
+  increaseScore(){
+    this.score++;
+    this.updateScoreInLocalStorage(this.score)
+  }
+
+  resetScore(){
+    this.score = 0;
+    this.updateScoreInLocalStorage(this.score)
+  }
+
+  updateScoreInLocalStorage(score: number){
+    this.storage.setItem('score', ''+score);
   }
 
   ngOnInit() {
@@ -26,6 +43,7 @@ export class WordleComponent implements OnInit {
   ngAfterViewInit() {
     const div = document.getElementById('' + this.tileCount) as HTMLDivElement;
     div.style.borderStyle = 'dashed'
+    this.score = Number(this.storage.getItem('score'))
   }
 
   numbers: number[] = Array.from({ length: 30 }, (_, i) => i);
@@ -37,16 +55,16 @@ export class WordleComponent implements OnInit {
   // Define the target word as a string
   secretWord: string = this.generateSecretWord();
 
-  toggleVolume() {
-    const soundIcon = document.getElementById("sound-icon");
-    if(soundIcon?.classList.value === 'fas fa-volume-xmark'){
-      this.playAudio()
-    }else{
-      this.stopAudio()
-    }
-    soundIcon?.classList.toggle("fa-volume-xmark");
-    soundIcon?.classList.toggle("fa-volume-high");
-  }
+  // toggleVolume() {
+  //   const soundIcon = document.getElementById("sound-icon");
+  //   if(soundIcon?.classList.value === 'fas fa-volume-xmark'){
+  //     this.playAudio()
+  //   }else{
+  //     this.stopAudio()
+  //   }
+  //   soundIcon?.classList.toggle("fa-volume-xmark");
+  //   soundIcon?.classList.toggle("fa-volume-high");
+  // }
 
   setMeaning(word: string){
     this.wordleService.getMeaning(word).subscribe(
@@ -72,19 +90,21 @@ export class WordleComponent implements OnInit {
       this.playing(key, event)
     }
   }
-  playAudio() {
-    this.audio.loop = true;
-    this.audio.play();
-  }
 
-  pauseAudio() {
-    this.audio.pause();
-  }
+  // Game Sound
+  // playAudio() {
+  //   this.audio.loop = true;
+  //   this.audio.play();
+  // }
+
+  // pauseAudio() {
+  //   this.audio.pause();
+  // }
   
-  stopAudio() {
-    this.audio.pause();
-    this.audio.load();
-  }  
+  // stopAudio() {
+  //   this.audio.pause();
+  //   this.audio.load();
+  // }  
 
   updateCurrentWord(char: string) {
     this.currentWord += char
@@ -211,10 +231,15 @@ export class WordleComponent implements OnInit {
         if (this.isInWords(this.currentWord)) {
           let res: string[] = this.charMatches(this.currentWord, this.secretWord);
           this.changeColor(res)
-          this.isGameOver = this.currentWord === this.secretWord;
+          let answer: boolean = this.currentWord === this.secretWord;
+          this.isGameOver = answer;
+          if(answer){
+            this.increaseScore();
+          }
           this.guessCount++
           if (this.guessCount == 6) {
             this.isGameOver = true;
+            this.resetScore();
             alert("6 Guess is Over and SecretWord is: " + this.secretWord)
           }
           this.currentWord = ''
