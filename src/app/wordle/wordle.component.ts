@@ -237,10 +237,12 @@ export class WordleComponent implements OnInit {
             this.increaseScore();
           }
           this.guessCount++
-          if (this.guessCount == 6) {
+          if (this.guessCount == 6 && !answer) {
             this.isGameOver = true;
             this.resetScore();
             alert("6 Guess is Over and SecretWord is: " + this.secretWord)
+          }else if(this.guessCount == 6 && answer){
+            this.isGameOver = true;
           }
           this.currentWord = ''
           this.start = this.end;
